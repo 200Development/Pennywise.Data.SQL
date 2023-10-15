@@ -1,13 +1,20 @@
 ﻿CREATE TABLE [dbo].[Account] (
-    [AccountId]        INT            NOT NULL,
-    [Name]             NVARCHAR (255) NOT NULL,
+    [Id]               INT            IDENTITY (1, 1) NOT NULL,
+    [AccountId]        NVARCHAR (255) NOT NULL,
+    [Name]             NVARCHAR (255) NULL,
     [OfficialName]     NVARCHAR (255) NULL,
-    [ItemId]           INT            NULL,
-    [Type]             VARCHAR (50)   NOT NULL,
-    [SubType]          VARCHAR (50)   NOT NULL,
-    [Mask]             VARCHAR (50)   NOT NULL,
-    [CurrentBalance]   MONEY          NOT NULL,
-    [AvailableBalance] MONEY          NOT NULL,
-    CONSTRAINT [PK_Account] PRIMARY KEY CLUSTERED ([AccountId] ASC)
+    [ItemId]           INT            NOT NULL,
+    [Type]             VARCHAR (50)   NULL,
+    [Subtype]          VARCHAR (50)   NULL,
+    [Mask]             VARCHAR (50)   NULL,
+    [CurrentBalance]   MONEY          NULL,
+    [AvailableBalance] MONEY          NULL,
+    [CreatedOn]        DATETIME2 (7)  NOT NULL,
+    [CreatedBy]        VARCHAR (50)   NOT NULL,
+    [LastUpdated]      DATETIME2 (7)  NOT NULL,
+    [LastUpdatedBy]    VARCHAR (50)   NOT NULL,
+    CONSTRAINT [PK_Account] PRIMARY KEY CLUSTERED ([Id] ASC)
 );
+
+
 
