@@ -60,6 +60,7 @@
     <Folder Include="dbo\Tables\" />
     <Folder Include="Security\" />
     <Folder Include="dbo\Stored Procedures\" />
+    <Folder Include="dbo\User Defined Types\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Account.sql" />
@@ -69,7 +70,9 @@
     <Build Include="dbo\Tables\User.sql" />
     <Build Include="Security\PennywiseAPI.sql" />
     <Build Include="Security\PennywiseAPI_1.sql" />
-    <Build Include="Security\RoleMemberships.sql" />
-    <Build Include="dbo\Stored Procedures\SaveAccessToken.sql" />
+    <Build Include="dbo\Stored Procedures\usp_UpdateTokenAndSyncEntities.sql" />
+    <Build Include="dbo\User Defined Types\AccountType.sql" />
+    <Build Include="dbo\User Defined Types\AccountDtoType.sql" />
+    <Build Include="Security\Permissions.sql" />
   </ItemGroup>
 </Project>
