@@ -13,8 +13,12 @@
     [CreatedBy]        VARCHAR (50)   NOT NULL,
     [LastUpdated]      DATETIME2 (7)  NOT NULL,
     [LastUpdatedBy]    VARCHAR (50)   NOT NULL,
+    [Limit]            MONEY          NULL,
+    [IsoCurrencyCode]  VARCHAR (12)   NULL,
     CONSTRAINT [PK_Account] PRIMARY KEY CLUSTERED ([Id] ASC)
 );
+
+
 
 
 

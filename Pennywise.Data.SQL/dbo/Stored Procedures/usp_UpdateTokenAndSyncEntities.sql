@@ -1,7 +1,9 @@
 ﻿/*=============================================
   Author:		Ryan Parsons
-  Create date: 10/15/2023
+  Create date:  10/15/2023
   Description:	Save Plaid access token and update Account and Institution entities
+  Modified:     
+	10/18/2023  Adds AvailableBalance, CurrentBalance, Limit, & IsoCurrencyCode to Account table (rparsons)
   =============================================*/
 CREATE PROCEDURE [dbo].[usp_UpdateTokenAndSyncEntities]
     @UserId INT,
@@ -29,7 +31,7 @@ BEGIN
         INSERT INTO Institution (PlaidInstitutionId, [InstitutionName], CreatedOn, CreatedBy, LastUpdated, LastUpdatedBy)
         OUTPUT INSERTED.Id INTO @OutputInstitutionTable
 	    VALUES (@InstitutionId, @InstitutionName, GETDATE(), CURRENT_USER, GETDATE(), CURRENT_USER)
-	
+
 		-- Assign the captured value to the scalar variable
 		SELECT TOP 1 @InstitutionId = Id FROM @OutputInstitutionTable;
 	END
@@ -44,7 +46,6 @@ BEGIN
 
 	-- Declare a table variable to capture the new ItemId output of the insert into Item statement
 	DECLARE @OutputItemTable TABLE (ItemId INT);
-
 	-- Declare variable to hold the new ItemId
 	DECLARE @NewItemId INT;
 	
@@ -56,8 +57,8 @@ BEGIN
 	-- Assign the captured value to the scalar variable
 	SELECT TOP 1 @NewItemId = ItemId FROM @OutputItemTable;
 	
-	INSERT INTO Account (AccountId, [Name], ItemId, [Type], Subtype, CreatedOn, CreatedBy, LastUpdated, LastUpdatedBy)
-    SELECT AccountId, [Name], @NewItemId, [Type], Subtype, GETDATE(), CURRENT_USER, GETDATE(), CURRENT_USER
+	INSERT INTO Account (AccountId, AvailableBalance, CurrentBalance, Limit, IsoCurrencyCode, [Name], ItemId, [Type], Subtype, CreatedOn, CreatedBy, LastUpdated, LastUpdatedBy)
+    SELECT AccountId, AvailableBalance, CurrentBalance, Limit, IsoCurrencyCode, [Name], @NewItemId, [Type], Subtype, GETDATE(), CURRENT_USER, GETDATE(), CURRENT_USER
     FROM @Accounts
     WHERE AccountId NOT IN (SELECT AccountId FROM Account)
 	   
