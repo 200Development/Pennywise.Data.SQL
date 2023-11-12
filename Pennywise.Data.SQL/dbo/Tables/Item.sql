@@ -12,3 +12,11 @@
 
 
 
+
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[Item] TO [PennywiseAPI]
+    AS [dbo];
+
