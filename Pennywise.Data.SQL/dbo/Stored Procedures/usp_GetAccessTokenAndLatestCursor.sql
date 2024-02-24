@@ -1,4 +1,4 @@
-﻿-- =============================================
+-- =============================================
 -- Author:		Ryan Parsons
 -- Create date: 10/23/2023
 -- Description:	Get Plaid access token and latest cursor (NextCursor) for Plaid endpoint transactions/sync
@@ -24,6 +24,6 @@ BEGIN
 END
 GO
 GRANT EXECUTE
-    ON OBJECT::[dbo].[usp_GetAccessTokenAndLatestCursor] TO [PennywiseAPI]
+    ON OBJECT::[dbo].[usp_GetAccessTokenAndLatestCursor] TO [dr_PennywiseAPI]
     AS [dbo];
 

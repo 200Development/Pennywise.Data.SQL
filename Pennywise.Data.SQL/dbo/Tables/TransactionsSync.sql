@@ -13,8 +13,8 @@
 );
 
 
+
+
 GO
-GRANT SELECT
-    ON OBJECT::[dbo].[TransactionsSync] TO [PennywiseAPI]
-    AS [dbo];
+
 

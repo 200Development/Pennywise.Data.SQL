@@ -79,3 +79,8 @@ BEGIN
 		       
     END CATCH
 END
+GO
+GRANT EXECUTE
+    ON OBJECT::[dbo].[usp_SyncTransactions] TO [dr_PennywiseAPI]
+    AS [dbo];
+

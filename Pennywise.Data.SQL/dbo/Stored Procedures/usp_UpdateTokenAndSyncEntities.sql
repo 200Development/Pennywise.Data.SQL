@@ -92,3 +92,8 @@ EXEC [dbo].[usp_UpdateTokenAndSyncEntities] @UserIdTest, @AccessTokenTest, @Inst
 
 
 ====================================================*/
+GO
+GRANT EXECUTE
+    ON OBJECT::[dbo].[usp_UpdateTokenAndSyncEntities] TO [dr_PennywiseAPI]
+    AS [dbo];
+
